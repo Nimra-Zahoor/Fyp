@@ -5,21 +5,28 @@ var Applicants=0;
 
 export default function TestAttempt() {
   const location = useLocation();
+  
   const navigate=useNavigate();
   const [data, setData] = React.useState("");
   useEffect(() => {
     setData(location.state.row)
   }, []);
-  
+  const testid=0;
   function wrap (){
    
-   navigate("/testquestion", { state: {answers:[],result:0,Applicants:Applicants+1,test:data,QIndex:0, 
+   navigate("/testquestion", { state: {answers:[],result:0,Applicants:Applicants+1,testid:data.id,test:data,QIndex:0, 
     job: location.state.job,user:location.state.user,time_started:new Date()} })
-  }
-
+  } 
+    //test id will be nevagated to status
+  
   return (
     <div className="auth-inner2">
+      
       <h3>{data.test_Name}</h3>
+      
+      {console.log(data.id)
+    
+      }
       <hr></hr>
         <p className="TWarning">*Read the Instructions Carefully*</p>
         <p className="TLabel"> Description</p>

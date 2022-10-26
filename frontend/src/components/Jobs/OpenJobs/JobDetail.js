@@ -3,12 +3,14 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import {auth,user} from "../../login.component";
 
 function JobDetail(props) {
-
+  
   const location = useLocation();
   const navigate = useNavigate();
+  
   return (
     <div>
       <div id='openJobsHeader'>
+      {console.log(location.state.id)}
         <header className='JobHeader'>{location.state.title}</header>
         <h5 className='company_title'>{location.state.company_name}</h5>
         <button className="btnn" onClick={() => {apply()}}>
