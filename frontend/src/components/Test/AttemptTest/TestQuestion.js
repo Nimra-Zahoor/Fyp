@@ -15,7 +15,10 @@ export default function TestQuestion() {
     var Completed = 0;
     function sendData (){
         const body={
-           
+            //job:job,
+
+            //user:user,
+           //test:test,
             InProgress:InProgress,
             
             Completed:Completed,
