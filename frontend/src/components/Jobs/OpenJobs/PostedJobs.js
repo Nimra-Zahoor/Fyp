@@ -43,7 +43,7 @@ function PostedJobs() {
   return (
     <div>
       <Card>
-        {job?.alljobs.map((item, id) => (
+        {job?.alljobs && job?.alljobs.map((item, id) => (
           <div key={id}>
             <div>Title {item.title}</div>
             <div>Age: {item.salary}</div>
