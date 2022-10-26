@@ -1,12 +1,15 @@
 import axios from 'axios'
 import Card from "@material-ui/core/Card";
 import React,{useState,useEffect} from 'react'
+import { useLocation, useNavigate } from "react-router-dom";
+
 function PostedJobs() {
-    
+        
          let data;
-        const [job,setJob]=useState([])
+        const [job,setJob]=useState({})
         const  [ID, setID] = useState()
         const [Status, setStatus] = useState()
+        const [allJob,setallJobs]=useState([])
         let getData = async () => {
           let res = await axios.get("http://127.0.0.1:8000/details_job/");
            data = await res.data;
@@ -16,22 +19,22 @@ function PostedJobs() {
        
         
         let getJobData = async () => {
-          let res = await axios.get("http://127.0.0.1:8000/getJobsbyCompany/"+ ID);
+          let res = await axios.get("http://127.0.0.1:8000/getJobsbyCompany/"+ 3);
           
            data = await res.data;
+           console.log(res.data);
+           console.log('res.data.jobs',res.data.alljobs)
         setJob(data);
         
       
        
         }; 
        
-        let one,two,three,four,five;
+       console.log('job?.alljob',job?.alljobs)
+       
+      //setallJobs(job?.alljobs);
 
-        let {alljobs}=job
-      //  let [titleofjob] = alljobs[1].title;
-      // let {jobb}=alljobs
-      // job = [one,two,three,four,five]
-      console.log(alljobs)
+     //  console.log(allJob)
     //  jobID = alljobs.id;
         let getStatusbyJob = async()=>{
           let res = await axios.get("http://127.0.0.1:8000/getStatusbyJob/"+ 3);
@@ -57,6 +60,13 @@ const [jobID, setJobID] = useState();
     
     <div>
      <Card>
+     {//allJob.map((item, id) => (
+      //<div key={id}>
+        //<div>Title {item.title}</div>
+        //<div>Age: {item.salary}</div>
+     // </div>
+   // ))
+   }
          ID : <h1>{ID}</h1>
    <select className="JobPostform-control" value={ID} onChange={(e) => { setID(e.target.value); }} >
             <option>1</option>
